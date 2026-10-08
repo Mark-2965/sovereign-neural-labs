@@ -1,0 +1,7 @@
+# SOVEREIGN NEURAL LABS: SECURITY PERIMETER EXCLUSIONS
+__pycache__/
+*.pyc
+*.db
+*.sqlite3
+.env
+.vscode/

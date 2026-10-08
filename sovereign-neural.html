@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOVEREIGN NEURAL LABS // Command Cockpit</title>
+    <style>
+        :root {
+            --bg-main: #030712;
+            --bg-card: #09101d;
+            --accent-cyan: #06b6d4;
+            --accent-green: #00ff87;
+            --text-raw: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-raw);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .cockpit-header {
+            border-bottom: 2px solid var(--accent-cyan);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .system-status {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+       /* SYSTEM DEPLOYMENT: HYPER-FILTERED RESPONSIVE UI CONTROLS */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 5px;
+                }
+
+        .module-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            transition: border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .data-stream {
+            background: #020617;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;       /* Prevents code strings from clipping out of the card */
+            word-break: break-all;       /* Forces long concatenated paths to wrap cleanly */
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .module-card:hover {
+            border: 1px solid var(--accent-cyan);
+        }
+        h2 { color: var(--accent-cyan); margin-top: 0; }
+        .data-stream {
+            background: #020617;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--text-muted);
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cockpit-header">
+        <h1>🦅 SOVEREIGN NEURAL LABS</h1>
+        <div>SYSTEM FREQUENCY: <span class="system-status">100% OPTIMIZED // ZERO-BUG FRAME</span></div>
+    </div>
+
+    <div class="grid-container">
+        <!-- MODULE 1: TRANSACTONAL INDEX LOGGER -->
+        <div class="module-card">
+            <h2>📊 Behavioral Vetting Ledger</h2>
+            <p>Log daily raw interaction metrics and audit asset integrity over time-delayed sandbox sprints.</p>
+            <div class="data-stream">
+                STATUS: Primed<br>
+                METRIC_FIELDS: [TDI_Ratio, Latency_Spikes, Resource_Demands]
+            </div>
+        </div>
+
+        <!-- MODULE 2: DATA ENGINEERING PIPELINES -->
+        <div class="module-card">
+            <h2>⚡ ML Data Pipeline Node</h2>
+            <p>Automated ingestion layers for multi-national corporate pipelines across Lagos, Accra, and Global Sourcing nodes.</p>
+            <div class="data-stream">
+                LOCAL_NODE: Ajah, Lekki<br>
+                TARGET_ENGINE: Python / SQL / ML-Inference
+            </div>
+        </div>
+    </div>
+    <!-- ==================================================================== -->
+    <!-- SOVEREIGN NEURAL LABS // VETTING LEDGER CLIENT-SIDE INTEGRATION APP -->
+    <!-- LAYER: FRONT-END JAVASCRIPT ENGINE // STATUS: AGENT CORE ONLINE      -->
+    <!-- ==================================================================== -->
+    
+    <!-- DYNAMIC USER INPUT INTERFACE INSERTION -->
+    <div class="module-card" style="margin-top: 20px; border-color: var(--accent-cyan);">
+        <h2>🏹 Live Ingestion Console</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px;">
+            <label>Asset Token Identifier:</label>
+            <input type="text" id="uiAssetToken" placeholder="e.g. ASSET_CHARLIE_VETTE" style="background: #020617; border: 1px solid #1e293b; color: white; padding: 8px; font-family: monospace;">
+            
+            <label>Resources Extracted (Capital/Bandwidth):</label>
+            <input type="number" id="uiExtracted" value="0" style="background: #020617; border: 1px solid #1e293b; color: white; padding: 8px; font-family: monospace;">
+            
+            <label>Value Injected (Peace/Support Hours):</label>
+            <input type="number" id="uiInjected" value="1" style="background: #020617; border: 1px solid #1e293b; color: white; padding: 8px; font-family: monospace;">
+            
+            <label>Latency Spikes (Communication Silence Blocks):</label>
+            <input type="number" id="uiSilence" value="0" style="background: #020617; border: 1px solid #1e293b; color: white; padding: 8px; font-family: monospace;">
+            
+            <button id="btnRunIngestion" style="background: var(--accent-cyan); color: #030712; border: none; padding: 10px; font-family: monospace; font-weight: bold; cursor: pointer; border-radius: 4px; margin-top: 5px;">
+                EXECUTE SYSTEM ING_VERDICT
+            </button>
+        </div>
+    </div>
+
+    <!-- LOCAL VERIFICATION ARCHIVE STREAM DISPLAY -->
+    <div class="module-card" style="margin-top: 20px;">
+        <h2>📋 Session Verification Logs (Local RAM Cache)</h2>
+        <div id="logConsole" class="data-stream" style="max-height: 200px; overflow-y: auto; line-height: 1.6;">
+            [SYSTEM READY] SECURITY MONITOR PROTOCOLS ACTIVE. NO ACTIVE LOG ENTRIES SUBMITTED YET.
+        </div>
+    </div>
+
+    <script>         
+ // =========================================================================
+// CORPORATE CORE DEPLOYMENT: SOVEREIGN NEURAL LEADERSHIP DATA ENGINE
+// FILE PORTFOLIO BASELINE TARGET: sovereign-neural.html
+// LIVE BACKEND NETWORK PORT corridor: http://localhost:5000/api/ingest
+// =========================================================================
+
+document.getElementById('btnRunIngestion').addEventListener('click', function() {
+    
+    // 1. EXTRACT DATA VALUES DIRECTLY FROM THE INTERFACE INPUT DOM FIELDS
+    const token = document.getElementById('tokenInput') ? document.getElementById('tokenInput').value : "UNKNOWN_ASSET_NODE";
+    const extracted = document.getElementById('extractedInput') ? parseInt(document.getElementById('extractedInput').value) || 0 : 0;
+    const injected = document.getElementById('injectedInput') ? parseInt(document.getElementById('injectedInput').value) || 0 : 0;
+    const silence = document.getElementById('silenceInput') ? parseInt(document.getElementById('silenceInput').value) || 0 : 0;
+
+    // 2. COMPILE DATA PAYLOAD STRINGS FOR HTTP BROADCAST
+    const payload = {
+        asset_token: token,
+        tdi_extracted: extracted,
+        value_injected: injected,
+        latency_silence: silence
+    };
+
+    console.log("[DATA INGESTION ACTIVE] Pushing payload:", JSON.stringify(payload));
+
+    // 3. ASYNCHRONOUS FETCH BROADCAST LOOP TO PORT 5000
+    fetch('http://localhost:5000/api/ingest', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP network anomaly detected. Status code: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Remove dynamic transmission loading text line cleanly from viewport
+        const txStatus = document.getElementById('uitxStatus');
+        if (txStatus) txStatus.remove();
+
+        // 4. MAP THE API VERDICT RESPONSES TO THE REQUISITE VISUAL INTERFACE BRAND COLOR STRINGS
+        let verdictColor = "var(--accent-green)"; // Pure operational stability baseline
+        if (data.verdict === "PURGED_EJECTED") {
+            verdictColor = "#ef4444"; // Total system boundary wipeout code
+        } else if (data.verdict === "SANDBOX_VETTING") {
+            verdictColor = "#eab308"; // Time-delayed vetting protocol alert
+        }
+
+        // 5. GENERATE ISO-COMPLIANT HISTORICAL SYSTEM TIMESTAMP METRICS
+        const now = new Date();
+        const timestamp = now.toISOString().replace('T', ' ').substring(0, 19);
+
+        // 6. BUILD RESPONSIVE HTML DATA ENTRY CARDS FOR LOG DISPLAY VIEWS
+        const logEntryHTML = `
+            <div style="border-left: 3px solid ${verdictColor}; background: #020617; padding: 12px; border-radius: 4px; margin-bottom: 10px; font-family: monospace; font-size: 12px; color: #94a3b8; word-break: break-all;">
+                [${timestamp}] <b>[API SUCCESS]</b> TOKEN: <span style="color: #f1f5f9;">${payload.asset_token}</span> | VERDICT: <span style="color: ${verdictColor}; font-weight: bold;">${data.verdict}</span>
+            </div>`;
+
+        // 7. INJECT THE NEW DATA LOG ENTRY DIRECTLY TO THE TOP OF THE CONSOLE DISPLAY TERMINAL
+        const logConsole = document.getElementById('logConsole');
+        if (logConsole) {
+            logConsole.innerHTML = logEntryHTML + logConsole.innerHTML;
+        }
+    })
+    .catch(error => {
+        // Exception handling router catches connectivity flatlines or down server ports
+        const txStatus = document.getElementById('uitxStatus');
+        if (txStatus) txStatus.remove();
+        
+        const logConsole = document.getElementById('logConsole');
+        if (logConsole) {
+            logConsole.innerHTML = `
+                <div style="color: #ef4444; border-left: 3px solid #ef4444; background: #020617; padding: 12px; border-radius: 4px; margin-bottom: 10px; font-family: monospace; font-size: 12px;">
+                    [${new Date().toISOString().replace('T', ' ').substring(0, 19)}] <b>[API ERROR]</b> Connection flatlined down the backend pipeline corridor. Check if pipeline.py is running active on port 5000.
+                </div>` + logConsole.innerHTML;
+        }
+        console.error('[CRITICAL BREAKDOWN] Error broadcasting data down the pipeline corridor:', error);
+    });
+});
+
+    </script>
+</body>
+</html>

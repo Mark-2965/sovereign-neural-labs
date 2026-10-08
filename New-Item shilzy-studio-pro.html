@@ -62,7 +62,7 @@
             font-weight: bold;
         }
 
-        input, textarea {
+        input {
             width: 100%;
             background: #040810;
             border: 1px solid rgba(100, 116, 139, 0.3);
@@ -99,21 +99,6 @@
             filter: brightness(1.1);
         }
 
-        .gallery-thumbnail {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        .gallery-thumbnail:hover {
-            border-color: var(--accent-neon);
-            transform: scale(1.03);
-        }
-
         .modeling-stage {
             width: 100%;
             height: 480px;
@@ -147,21 +132,21 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                 <div class="form-group">
                     <label>Bust / Chest (in)</label>
-                    <input type="number" id="m-chest" value="36" min="20" max="60">
+                    <input type="number" id="m-chest" value="32" min="20" max="60">
                 </div>
                 <div class="form-group">
                     <label>Waist (in)</label>
-                    <input type="number" id="m-waist" value="30" min="15" max="55">
+                    <input type="number" id="m-waist" value="33" min="15" max="55">
                 </div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                 <div class="form-group">
                     <label>Hips (in)</label>
-                    <input type="number" id="m-hips" value="40" min="25" max="65">
+                    <input type="number" id="m-hips" value="32" min="25" max="65">
                 </div>
                 <div class="form-group">
                     <label>Sleeve Length (in)</label>
-                    <input type="number" id="m-sleeve" value="24">
+                    <input type="number" id="m-sleeve" value="20">
                 </div>
             </div>
             
@@ -172,29 +157,29 @@
                 </div>
             </div>
         </div>
-                <!-- RIGHT CONTROL CELL: LIVE LOOKBOOK INJECTION PORTAL & FIT MODELER -->
-        <div class="panel-card">
-            <h2>🖼️ Lookbook Web Search Portal Matrix</h2>
-            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                <input type="text" id="studio-search-bar" value="Ankara gown" placeholder="Search apparel styles (e.g. Ankara gown, corporate suit, Indian lehenga)...">
-                <button id="search-trigger-btn" style="width: auto; padding: 0 25px; background: var(--accent-neon); color: #040810; font-weight: bold;">🔍 Search Web Directory</button>
-            </div>
 
-            <!-- 🌐 LIVE IFRAME STREAMING CONSOLE VIEWPORT (UNCHOPPED INTEGRATION) -->
-            <div style="width: 100%; height: 260px; background: #040810; border-radius: 6px; overflow: hidden; border: 1px solid rgba(0, 255, 135, 0.15); margin-bottom: 20px; position: relative;">
-                <iframe id="live-lookbook-iframe" src="https://yahoo.com" style="width: 100%; height: 100%; border: none; background: #040810;"></iframe>
+        <!-- RIGHT CONTROL CELL: PASTE-AND-SCALE DESIGN MODELING STUDIO -->
+        <div class="panel-card">
+            <h2>🖼️ Design Lookbook Modeling Engine</h2>
+            
+            <!-- 📥 Live Image Link Input Matrix Row -->
+            <div style="margin-bottom: 20px; background: #040810; padding: 15px; border-radius: 6px; border: 1px dashed rgba(0, 255, 135, 0.2);">
+                <label style="color: var(--accent-neon); margin-bottom: 8px; display: block;">📥 Paste Any Web Image URL to Model</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="custom-image-url-input" placeholder="Paste direct image link address here (ends in .jpeg, .jpg, .png)..." style="flex: 2;">
+                    <button id="load-image-url-btn" style="width: auto; padding: 0 25px; background: var(--accent-neon); color: #040810; font-weight: bold;">⚡ Load & Model Design</button>
+                </div>
             </div>
 
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <label style="color: var(--accent-neon); font-size: 11px; margin: 0;">🧥 Proportional Model Viewport Matrix</label>
+                <label style="color: var(--accent-neon); font-size: 11px; margin: 0;">🧥 Proportional Model Fitting Viewport</label>
                 <button id="commit-to-vault-btn" style="width: auto; padding: 6px 15px; font-size: 10px; background: rgba(168, 85, 247, 0.15); border: 1px solid var(--accent-royal);">📥 Commit Profile to Vault</button>
             </div>
 
             <div class="modeling-stage">
                 <!-- Proportional Scaling Outer Wrapper Frame -->
-                <div id="physics-scaling-frame" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);">
-                    <!-- High definition master fallback modeling layout template -->
-                    <img id="stage-viewport-img" src="https://pexels.com" style="max-width: 100%; max-height: 100%; object-fit: contain; transition: all 0.4s ease; border-radius: 6px;">
+                <div id="physics-scaling-frame" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                    <img id="stage-viewport-img" src="https://pexels.com" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
                 </div>
                 
                 <!-- Fixed Real-time Matrix Telemetry Overlays Badge -->
@@ -211,63 +196,56 @@
         const VAULT_STORAGE_KEY = 'shilzy_studio_pro_vault';
         let studioVault = JSON.parse(localStorage.getItem(VAULT_STORAGE_KEY)) || [];
 
-        const searchInput = document.getElementById('studio-search-bar');
-        const searchBtn = document.getElementById('search-trigger-btn');
-        const lookbookIframe = document.getElementById('live-lookbook-iframe');
+        const urlInput = document.getElementById('custom-image-url-input');
+        const loadUrlBtn = document.getElementById('load-image-url-btn');
         const stageImg = document.getElementById('stage-viewport-img');
         const scalingFrame = document.getElementById('physics-scaling-frame');
         const telemetryBadge = document.getElementById('telemetry-badge');
         const commitVaultBtn = document.getElementById('commit-to-vault-btn');
         const savedVaultGrid = document.getElementById('saved-gallery-vault');
 
-        // 🔍 Core Media Router Search Directory Portal Mapping Loop
-        searchBtn.addEventListener('click', () => {
-            const queryText = searchInput.value.trim();
-            if (!queryText) { alert('Please enter an apparel design style keyword description first.'); return; }
-
-            // 🧱 MODULAR TEXT BRICKS TO BYPASS TRAFFIC ROUTING RESTRICTIONS CLEANLY
-            const searchBase   = "https://yahoo.com";
-            const searchRouter = "search/images?p=";
-            const encodedQuery = encodeURIComponent(queryText);
+        // ⚡ Live URL Image Loader Gateway Hook Loop
+        loadUrlBtn.addEventListener('click', () => {
+            const rawUrl = urlInput.value.trim();
+            if (!rawUrl) { alert('⚠️ INPUT LINK REQUIRED!\nPlease paste an image link row address to load onto the stage.'); return; }
             
-            // Assemble an unchopped live web portal frame window link address
-            const completePortalUrl = searchBase + searchRouter + encodedQuery;
+            // Map the image viewport straight onto the custom user input string parameter natively
+            stageImg.src = rawUrl;
             
-            console.log("🛰️ LIVE LOOKBOOK PORTAL STREAM CONNECTED:", completePortalUrl);
-            
-            // Hot-reload the iframe portal console window natively with full web search pools
-            lookbookIframe.src = completePortalUrl;
+            // Re-fire proportional physics scale matrices immediately
+            calculateAspectFitModulation();
         });
 
-        // 📐 Precise Proportional Shrink & Fit Proportional Sizing Formula Engine
+        // 📐 Precise Proportional Shrink, Squeeze, & Expand Fit Proportional Sizing Formula Engine
         function calculateAspectFitModulation() {
             const chest = parseFloat(document.getElementById('m-chest').value) || 36;
             const waist = parseFloat(document.getElementById('m-waist').value) || 30;
             const hips = parseFloat(document.getElementById('m-hips').value) || 40;
 
-            // Ideal standard baseline scale modeling blueprints
+            // Ideal standard baseline scale modeling blueprints (Base Size)
             const baseChest = 36;
             const baseWaist = 30;
             const baseHips = 40;
 
-            // Compute structural dimensional scale offsets
+            // Compute structural sizing ratio calculations
             const wScale = (chest / baseChest + waist / baseWaist + hips / baseHips) / 3;
             const hScale = baseWaist / waist;
 
-            // Constrain percentages to keep modeling boundaries safe and neat on canvas frame skin
-            let targetWidth = Math.min(Math.max(wScale * 100, 55), 125);
-            let targetHeight = Math.min(Math.max(hScale * 100, 70), 120);
+            // Constrain percentages to keep rendering boundaries safe and proportional on stage canvas
+            let targetWidth = Math.min(Math.max(wScale * 100, 45), 140);
+            let targetHeight = Math.min(Math.max(hScale * 100, 60), 130);
 
-            // Execute responsive transformation adjustments across the CSS rendering layout nodes
+            // Execute explicit pixel dimensions stretching and shrinking across the element nodes
             scalingFrame.style.width = targetWidth + "%";
             scalingFrame.style.height = targetHeight + "%";
 
-            telemetryBadge.innerText = `MODEL FIT CONFIG: B:${chest}" W:${waist}" H:${hips}" | SCALE: W:${Math.round(targetWidth)}% H:${Math.round(targetHeight)}%`;
+            telemetryBadge.innerText = `MODEL FIT CONFIG: B:${chest}" W:${waist}" H:${hips}" | SCALE W:${Math.round(targetWidth)}% H:${Math.round(targetHeight)}%`;
         }
 
-        // Auto-recalculate scaling metrics parameters the millisecond she adjusts numbers
+        // Bind auto-recalculation listeners to forms fields to scale layout instantly on click/type
         ['m-chest', 'm-waist', 'm-hips'].forEach(id => {
             document.getElementById(id).addEventListener('input', calculateAspectFitModulation);
+            document.getElementById(id).addEventListener('change', calculateAspectFitModulation);
         });
 
         // 📥 Persistent Collection Vault Storage Execution
@@ -285,7 +263,7 @@
             studioVault.push(payload);
             localStorage.setItem(VAULT_STORAGE_KEY, JSON.stringify(studioVault));
             renderVaultThumbnails();
-            alert(`🎉 SNAPSHOT RECORD COMMITTED!\nClient modeling profile for [${currentName}] saved successfully inside storage vault!`);
+            alert(`🎉 SNAPSHOT RECORD COMMITTED!\nClient modeling profile saved inside storage vault!`);
         });
 
         function renderVaultThumbnails() {
@@ -308,6 +286,7 @@
                 
                 img.addEventListener('click', () => {
                     stageImg.src = item.url;
+                    urlInput.value = item.url;
                     calculateAspectFitModulation();
                 });
 
@@ -316,7 +295,7 @@
             });
         }
 
-        // Initialize parameters on load
+        // Initialize state fields on load
         renderVaultThumbnails();
         calculateAspectFitModulation();
     </script>

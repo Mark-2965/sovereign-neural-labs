@@ -506,6 +506,26 @@
             <button class="btn-main" id="start-btn">Initialize Audio Nexus</button>
         </div>
     </div>
+
+
+<!-- ========================================== -->
+<!-- SOVEREIGN NEURAL LABS: DATA CALIBRATION DECK -->
+<!-- ========================================== -->
+<div id="calibration-deck" style="background:#09101d; border:1px solid #00ff87; border-radius:8px; padding:20px; margin-top:30px; font-family:monospace; color:#f8fafc;">
+    <h3 style="color:#00ff87; margin-top:0; text-transform:uppercase; letter-spacing:1px;">⚙️ System Data Calibration Deck</h3>
+    <p style="color:#94a3b8; font-size:12px;">Active Pipeline Node: Lagos_Core_Ingest // Ledger Storage Interface</p>
+    
+    <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
+        <button onclick="executeLedgerCalibrate('SHIFT_LEAN')" style="background:#0b192c; border:1px solid #38bdf8; color:#38bdf8; padding:8px 15px; cursor:pointer; font-family:monospace; border-radius:4px;">⚡ Calibrate Shift Logs</button>
+        <button onclick="executeLedgerCalibrate('FLUSH_CACHE')" style="background:#0b192c; border:1px solid #ef4444; color:#ef4444; padding:8px 15px; cursor:pointer; font-family:monospace; border-radius:4px;">⚠️ Truncate Data Cache</button>
+    </div>
+    
+    <div id="db-status-log" style="background:#040810; border:1px solid #1e293b; padding:10px; font-size:12px; color:#38bdf8; border-radius:4px; min-height:40px;">
+        [SYSTEM STATUS]: Storage engine initialized. Ready for array calibration queries.
+    </div>
+</div>
+
+
            <script>
         // 🗓️ 1. GLOBAL STATE & DATE-AWARE STORAGE RESERVOIR INITIALIZATION
         const currentLocalDate = new Date().toLocaleDateString();
